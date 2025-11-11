@@ -9,11 +9,13 @@ const listingSchema = new Schema({
     },
     description: String,
     image: {
-        type: String,
-        default:
-            "https://media.istockphoto.com/id/913439164/photo/blue-city-of-jodhpur-top-view.jpg?s=1024x1024&w=is&k=20&c=KueZQUfL8pTd7dDx6Y6dzCI4MlPCQWMc6-voFcL3Qs8=",
+        url: String,
+        filename: String,
+        // type: String,
+        // default:
+        //     "https://media.istockphoto.com/id/913439164/photo/blue-city-of-jodhpur-top-view.jpg?s=1024x1024&w=is&k=20&c=KueZQUfL8pTd7dDx6Y6dzCI4MlPCQWMc6-voFcL3Qs8=",
             
-        set: (v) => v === "" ?"https://media.istockphoto.com/id/1177931033/photo/urban-decay-and-view-of-roofs-in-delhi-india.jpg?s=1024x1024&w=is&k=20&c=6ifSELzxZJEn40gitoupS5Eos0orDMAiDCgCR7PmYhg=" : v,
+        // set: (v) => v === "" ?"https://media.istockphoto.com/id/1177931033/photo/urban-decay-and-view-of-roofs-in-delhi-india.jpg?s=1024x1024&w=is&k=20&c=6ifSELzxZJEn40gitoupS5Eos0orDMAiDCgCR7PmYhg=" : v,
     }, 
     price: Number,
     location: String,

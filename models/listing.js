@@ -21,6 +21,9 @@ const listingSchema = new Schema({
     location: String,
     country: String,
 
+    lat: Number,
+    lng: Number,
+
     reviews: [
         {
             type: Schema.Types.ObjectId,

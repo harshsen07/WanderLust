@@ -1,4 +1,13 @@
 <% layout("/layouts/boilerplate") %>
+<script>
+    const apiKeyy= "<%=process.env.MAP_API_KEY%>";
+
+    const lat = <%-JSON.stringify(listing.lat) %>
+    const lng = <%-JSON.stringify(listing.lng) %>
+    const listingLocation = <%-JSON.stringify(listing.location) %>
+    const listingTitle = <%-JSON.stringify(listing.title) %>
+    // console.log(lat, lng)
+</script>
 <body>
     <div class="row mt-3">
         <div class="col-8 offset-3">
@@ -79,8 +88,9 @@
 
 
 
-        <p><b>All Reviews</b></p>
+            <% if(listing.reviews.length > 0) {%>
             <div class="row">
+            <p><b>All Reviews</b></p>
             <% for (review of listing.reviews) { %>
                 
                 <div class="card col-5 ms-3 mb-3">
@@ -98,8 +108,18 @@
                
             <%}%>
             </div>
+            <%}%>
  
        
     </div>
+    <div class="col-6 offset-3 mb-3">
+        <h3>Where you'll be</h3>
+        <div id="my-map" style="height:400px; width:400px"></div>
     </div>
+    </div>
+
+
+
+
+    <script src="/js/map.js"> </script>
 </body>

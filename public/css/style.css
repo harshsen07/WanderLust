@@ -147,3 +147,7 @@ body{
 .photo{
     border-radius: 20px !important;
 }
+#map { 
+    height: 400px;
+    width: 80vh;
+}

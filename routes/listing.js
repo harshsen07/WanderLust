@@ -21,6 +21,7 @@ router
 // .post((req,res) =>{
 //     res.send(req.file);
 // })
+router.get( "/search" , wrapAsync(listingController.searchFeature));
 
 // new route  it must be written above the show route otherwise we get a cast error
 router.get("/new" ,isLoggedIn,listingController.renderNewForm ) 

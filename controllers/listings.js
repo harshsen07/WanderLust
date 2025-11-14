@@ -151,3 +151,24 @@ module.exports.renderEditForm = async(req,res,next) =>{
     req.flash("success" , "listing successfully deleted")
     res.redirect("/listings")
   }
+
+  module.exports.searchFeature =async(req,res) =>{
+      //  console.log("checking1")
+        const searchQuery = req.query.q;
+        let filter = {};
+    
+        if(searchQuery){
+            filter = {
+                location: {
+                    $regex :searchQuery, $options: 'i'
+                }
+            }
+        }
+      //   console.log('filter:' , filter);
+  
+        const allListings = await Listing.find(filter);
+  
+      //   console.log('result:' , allListings);
+      //   console.log("checking")
+        res.render('listings' , {allListings , searchQuery})
+    }

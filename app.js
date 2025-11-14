@@ -188,6 +188,9 @@ app.use("/" , userRouter)
 // app.all("(.*)" , (req,res,next) =>{
 //   next(new ExpressError(404 , "page not found !"))
 // })
+  app.get("/" , (req,res) =>{
+    res.redirect("/listings");
+  })
 
    app.use( (req,res,next) =>{
   next(new ExpressError(404 , "page not found !"))

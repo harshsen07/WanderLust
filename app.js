@@ -26,6 +26,8 @@ const User = require("./models/user.js")
 const listingRouter = require("./routes/listing.js");
 const reviewRouter  = require("./routes/review.js")
 const userRouter  = require("./routes/user.js")
+const bookingRoutes = require("./routes/bookings");
+const userBookingRoutes = require("./routes/userBookings");
 
 
 // const MONGO_URL = "mongo://127.0.0.1:27017/wanderlust";
@@ -127,6 +129,8 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use("/listings" , listingRouter)
 app.use("/listings/:id/reviews" ,reviewRouter )
 app.use("/" , userRouter)
+app.use("/listings/:id", bookingRoutes);
+app.use("/", userBookingRoutes);
 
 
 

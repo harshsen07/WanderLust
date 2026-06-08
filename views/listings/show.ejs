@@ -40,6 +40,45 @@
     </div>
    <%}%>
     <hr>
+
+
+    <!-- booking form start from here -->
+
+    <% if(currUser) { %>
+<div class="card col-6 offset-3 mb-4 p-3">
+    <h4>Book This Stay</h4>
+
+    <form action="/listings/<%= listing._id %>/book" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label">Check In</label>
+            <input
+                type="date"
+                name="checkIn"
+                class="form-control"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Check Out</label>
+            <input
+                type="date"
+                name="checkOut"
+                class="form-control"
+                required
+            >
+        </div>
+
+        <button class="btn btn-dark">
+            Book Now
+        </button>
+
+    </form>
+</div>
+<% } %>
+
+<!-- booking form ends here -->
     
 
      <% if(currUser) {%> 

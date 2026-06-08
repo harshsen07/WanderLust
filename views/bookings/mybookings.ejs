@@ -1,0 +1,77 @@
+<% layout("/layouts/boilerplate") %>
+
+<h2 class="mt-4 mb-4">My Bookings</h2>
+
+<div class="row">
+  <% for(let booking of bookings) { %>
+
+    <div class="card col-4 m-3">
+      <img
+        src="<%= booking.listing.image.url %>"
+        class="card-img-top"
+        alt="listing"
+      >
+
+      <div class="card-body">
+        <h5><%= booking.listing.title %></h5>
+
+        <p>
+          Check In:
+          <%= booking.checkIn.toDateString() %>
+        </p>
+
+        <p>
+          Check Out:
+          <%= booking.checkOut.toDateString() %>
+        </p>
+
+         <%
+          const nights =
+              (booking.checkOut - booking.checkIn) /
+              (1000 * 60 * 60 * 24);
+        %>
+
+        <p>
+        Nights:
+            <%= nights %>
+        </p>
+
+        <p>
+          Total Price:
+          ₹<%= booking.totalPrice.toLocaleString("en-IN") %>
+        </p>
+
+
+
+        <p>
+          Booked On:
+          <%= booking.createdAt.toDateString() %>
+        </p>
+
+         <p>
+           Status:
+
+            <% if(booking.status === "confirmed") { %>
+            <span class="badge bg-success">Confirmed</span>
+            <% } else { %>
+              <span class="badge bg-danger">Cancelled</span>
+            <% } %>
+
+        </p>
+
+        <% if(booking.status === "confirmed") { %>
+
+        <form
+         action="/bookings/<%= booking._id %>/cancel?_method=PUT"
+         method="POST">
+         <button class="btn btn-danger">
+          Cancel Booking
+         </button>
+        </form>
+
+<% } %>
+      </div>
+    </div>
+
+  <% } %>
+</div>
